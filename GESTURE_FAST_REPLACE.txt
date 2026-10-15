@@ -1,0 +1,17 @@
+JARVIS FAST GESTURE + PINCH UPGRADE
+
+Copy/replace these files into your existing JARVIS project, keeping the folder paths:
+- app.py
+- src/pinch.py
+- src/gestures.py (included unchanged to preserve current gesture labels)
+
+This package also includes the full current JARVIS files so it can be used as a complete project replacement if needed. Back up your project first.
+
+Speed changes: 640x360 webcam processing, MediaPipe model_complexity=0, 3-frame gesture stabilization, faster cursor smoothing, lower PyAutoGUI pause, and 2-frame pinch confirmation with hysteresis.
+
+Run from your project folder:
+.\.venv\Scripts\python.exe -m py_compile app.py src\pinch.py src\gestures.py
+.\.venv\Scripts\python.exe -m pytest tests -q
+.\.venv\Scripts\python.exe app.py
+
+If you get accidental clicks, set start_ratio=0.32 in src/pinch.py. If pinches are still hard to trigger, try 0.40.
